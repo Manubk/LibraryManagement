@@ -12,7 +12,6 @@ public class Book {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	private String name;
-	private String authorName;
 	private int cost;
 	
 	public Book() {
@@ -24,7 +23,6 @@ public class Book {
 		super();
 		this.id = id;
 		this.name = name;
-		this.author = author;
 		this.cost = cost;
 	}
 
@@ -42,14 +40,6 @@ public class Book {
 
 	public void setName(String name) {
 		this.name = name;
-	}
-
-	public String getAuthor() {
-		return author;
-	}
-
-	public void setAuthor(String author) {
-		this.author = author;
 	}
 
 	public int getCost() {
