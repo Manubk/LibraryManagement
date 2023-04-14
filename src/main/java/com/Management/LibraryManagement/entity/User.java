@@ -1,17 +1,23 @@
 package com.Management.LibraryManagement.entity;
 
-import org.springframework.data.annotation.CreatedDate;
+import java.util.Date;
 
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
+
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.Temporal;
+import jakarta.persistence.TemporalType;
 
 @Entity
 public class User {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	private String name;
 	private String role;
@@ -20,15 +26,17 @@ public class User {
 	private String phone;
 
 	@CreatedDate
-	private String createdDate;
-//	private boolean deleted = Boolean.FALSE;
+	private Date createdAt;
+	
+	@LastModifiedDate
+	private Date lastUpdatedAt; 
 
 	public User() {
 		super();
 		System.out.println("User Class initiated");
 	}
 
-	public User(int id, String name, String role, String email, String password, String phone, String createdDate) {
+	public User(int id, String name, String role, String email, String password, String phone, Date createdAt,Date lastUpdatedAt) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -36,8 +44,8 @@ public class User {
 		this.email = email;
 		this.password = password;
 		this.phone = phone;
-		this.createdDate = createdDate;
-//		this.deleted = deleted;
+		this.createdAt = createdAt;
+		this.lastUpdatedAt = lastUpdatedAt;
 	}
 
 	public int getId() {
@@ -88,22 +96,28 @@ public class User {
 		this.phone = phone;
 	}
 
-
-	public String getCreatedDate() {
-		return createdDate;
+	public Date getCreatedAt() {
+		return createdAt;
 	}
 
-	public void setCreatedDate(String createdDate) {
-		this.createdDate = createdDate;
+	public void setCreatedAt(Date createdAt) {
+		this.createdAt = createdAt;
 	}
 
+	public Date getLastUpdatedAt() {
+		return lastUpdatedAt;
+	}
+
+	public void setLastUpdatedAt(Date lastUpdatedAt) {
+		this.lastUpdatedAt = lastUpdatedAt;
+	}
 
 	@Override
 	public String toString() {
 		return "User [id=" + id + ", name=" + name + ", role=" + role + ", email=" + email + ", password=" + password
-				+ ", phone=" + phone + ", createdDate=" + createdDate + "]";
+				+ ", phone=" + phone + ", createdAt=" + createdAt + ", lastUpdatedAt=" + lastUpdatedAt + "]";
 	}
 	
-	
+
 
 }
