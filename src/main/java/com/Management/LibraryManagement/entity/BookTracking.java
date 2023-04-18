@@ -15,9 +15,8 @@ public class BookTracking {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
-	@OneToOne
+
 	private User user;
-	@OneToOne
 	private Book book;
 	private Date purchaseDate;
 	private Date returndate;

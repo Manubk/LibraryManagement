@@ -16,8 +16,6 @@ public class Book {
 	private String name;
 	private int cost;
 	private int quantity;
-	
-	@ManyToOne(cascade = CascadeType.ALL)
 	private Author author;
 	
 	public Book() {

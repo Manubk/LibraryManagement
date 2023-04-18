@@ -19,9 +19,6 @@ public class Author {
 	private String name;
 	private String email;
 	private String phone;
-	
-	@OneToMany (cascade = CascadeType.ALL)
-	
 	private List<Book> books;  
 	
 	
