@@ -14,11 +14,13 @@ import jakarta.persistence.OneToMany;
 public class Author {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY) 
 	private int id;
 	private String name;
 	private String email;
 	private String phone;
+	
+	@OneToMany(mappedBy = "author")
 	private List<Book> books;  
 	
 	

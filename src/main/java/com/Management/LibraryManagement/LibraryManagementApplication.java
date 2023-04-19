@@ -2,10 +2,12 @@ package com.Management.LibraryManagement;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
-@ComponentScan( basePackages = "com.Management")
+@ComponentScan(basePackages = "com.Management")
+@EntityScan(basePackages = "com.Management.LibraryManagement.entity")
 public class LibraryManagementApplication {
 
 	public static void main(String[] args) {

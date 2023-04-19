@@ -1,17 +1,16 @@
 package com.Management.LibraryManagement.entity;
 
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.Temporal;
-import jakarta.persistence.TemporalType;
+import jakarta.persistence.OneToMany;
 
 @Entity
 public class User {
@@ -29,14 +28,18 @@ public class User {
 	private Date createdAt;
 	
 	@LastModifiedDate
-	private Date lastUpdatedAt; 
+	private Date lastUpdatedAt;
+	
+	@OneToMany(mappedBy = "user")
+	private List<BookTracking> booktracking;
 
 	public User() {
 		super();
 		System.out.println("User Class initiated");
 	}
 
-	public User(int id, String name, String role, String email, String password, String phone, Date createdAt,Date lastUpdatedAt) {
+	public User(int id, String name, String role, String email, String password, String phone, Date createdAt,
+			Date lastUpdatedAt, List<BookTracking> booktracking) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -46,6 +49,7 @@ public class User {
 		this.phone = phone;
 		this.createdAt = createdAt;
 		this.lastUpdatedAt = lastUpdatedAt;
+		this.booktracking = booktracking;
 	}
 
 	public int getId() {
@@ -112,11 +116,14 @@ public class User {
 		this.lastUpdatedAt = lastUpdatedAt;
 	}
 
-	@Override
-	public String toString() {
-		return "User [id=" + id + ", name=" + name + ", role=" + role + ", email=" + email + ", password=" + password
-				+ ", phone=" + phone + ", createdAt=" + createdAt + ", lastUpdatedAt=" + lastUpdatedAt + "]";
+	public List<BookTracking> getBooktracking() {
+		return booktracking;
 	}
+
+	public void setBooktracking(List<BookTracking> booktracking) {
+		this.booktracking = booktracking;
+	}
+
 	
 
 
