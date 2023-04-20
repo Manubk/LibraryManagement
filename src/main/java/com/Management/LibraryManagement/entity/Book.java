@@ -2,11 +2,14 @@ package com.Management.LibraryManagement.entity;
 
 import java.util.List;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 import jakarta.persistence.*;
 
 @Entity
+
 public class Book {
 	
 	@Id
@@ -16,7 +19,7 @@ public class Book {
 	private int cost;
 	private int quantity;
 	
-	@JsonIgnore
+	
 	@ManyToOne
 	private Author author;
 	
@@ -70,6 +73,7 @@ public class Book {
 		this.quantity = quantity;
 	}
 
+	@JsonManagedReference
 	public Author getAuthor() {
 		return author;
 	}

@@ -18,8 +18,8 @@ public class AuthorService {
 	 * this method for save and update
 	 */
 	public Author save(Author author) {
-		author = authorRepository.save(author);
-		return author;
+		return  authorRepository.save(author);
+		
 	}
 
 	/*

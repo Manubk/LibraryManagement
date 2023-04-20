@@ -124,6 +124,13 @@ public class User {
 		this.booktracking = booktracking;
 	}
 
+	@Override
+	public String toString() {
+		return "User [id=" + id + ", name=" + name + ", role=" + role + ", email=" + email + ", password=" + password
+				+ ", phone=" + phone + ", createdAt=" + createdAt + ", lastUpdatedAt=" + lastUpdatedAt
+				+ ", booktracking=" + booktracking + "]";
+	}
+
 	
 
 

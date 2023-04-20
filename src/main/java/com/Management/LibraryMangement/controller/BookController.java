@@ -12,10 +12,13 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.Management.LibraryManagement.service.AuthorService;
 import com.Management.LibraryManagement.service.BookService;
+import com.Management.LibraryManagement.Reposetory.BookRepository;
 
 //Entity Packages
 import com.Management.LibraryManagement.entity.Book;
+import com.Management.LibraryManagement.entity.Author;
 
 @RestController
 @RequestMapping("api/v1/book")
@@ -23,6 +26,9 @@ public class BookController {
 	
 	@Autowired
 	private BookService bookService; 
+	
+	@Autowired
+	private AuthorService authorService;
 	
 	@PostMapping("")
 	public Book saveBook(@RequestBody Book book) {
@@ -48,5 +54,18 @@ public class BookController {
 	@DeleteMapping("")
 	public void delete(Book book) {
 		bookService.delete(book);
+	}
+	
+	/*
+	 * Extra Methods
+	 * assigning the author to the book 
+	 */
+	
+	@PutMapping("/{bookId}/author/{authorId}")
+	public Book setAuthorTOBook(@PathVariable int bookId , @PathVariable int authorId) {
+		Book book = bookService.findBookById(bookId);
+		Author author = authorService.findById(authorId);
+		book.setAuthor(author);
+		return bookService.save(book);
 	}
 }
